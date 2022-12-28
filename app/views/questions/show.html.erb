@@ -1,6 +1,5 @@
-<% if @question.hidden == false %>
+<div class="container <%= 'hidden' if @question.hidden? %>">
 
-  <div class="container">
     <h2 class="title-lg mb">Question <%= @question.id %></h2>
 
     <p class="mb-sm"><%= @question.body %></p>
@@ -14,23 +13,4 @@
     </div>
 
     <p class="mt"><%= link_to "All questions", questions_path %></p>
-  </div>
-
-<% else %>
-
-  <div class="container hidden">
-    <h2 class="title-lg mb">Question <%= @question.id %></h2>
-
-    <p class="mb-sm"><%= @question.body %></p>
-    <p>user_id: <b><%= @question.user_id %></b></p>
-
-    <div class="mt">
-      <%= link_to fa_icon("pencil"), edit_question_path(@question), title: "Edit question" %>
-      <%= button_to fa_icon("trash-o"), question_path(@question), method: :delete, title: "Delete question",
-                    form: {data: {turbo_confirm: "Are you sure you want to delete?"}} %>
-    </div>
-
-    <p class="mt"><%= link_to "All questions", questions_path %></p>
-  </div>
-
-<% end %>
+</div>
